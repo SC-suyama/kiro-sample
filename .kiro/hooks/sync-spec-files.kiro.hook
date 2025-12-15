@@ -1,0 +1,18 @@
+{
+  "enabled": true,
+  "name": "仕様書ファイル同期",
+  "description": "requirements.md、design.md、tasks.mdが編集された際に、影響を受ける関連ファイルやコンポーネントを自動的に同期・更新します",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "requirements.md",
+      "design.md",
+      "tasks.md"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "以下のファイルが更新されました: {filePath}\n\nこのファイルの変更内容を分析し、影響を受ける可能性のある以下の要素を特定して同期してください：\n\n1. 関連する仕様書ファイル（他のmd ファイル）\n2. AIプロンプトテンプレート（ai_prompts/配下）\n3. バックエンドのモデルやサービス（backend/app/配下）\n4. フロントエンドのコンポーネント（frontend/src/配下）\n5. テストファイル\n6. ドキュメント（docs/配下）\n\n変更されたファイルの内容を確認し、整合性を保つために更新が必要なファイルを特定して、適切な同期作業を実行してください。特に日本語の業務要件や仕様の変更が、システム全体の設計や実装にどのような影響を与えるかを考慮してください。"
+  }
+}
